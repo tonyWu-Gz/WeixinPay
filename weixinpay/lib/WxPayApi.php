@@ -425,7 +425,7 @@ class WxPayApi {
      * $callback  原型为：function function_name($data){}
      */
     public static function notify($config, $callback, &$msg) {
-        $data = PHP_INPUT;//file_get_contents('php://input');//$GLOBALS['HTTP_RAW_POST_DATA']
+        $data = file_get_contents('php://input');//$GLOBALS['HTTP_RAW_POST_DATA']
         if (!isset($data)) {
             # 如果没有数据，直接返回失败
             return false;

@@ -27,7 +27,7 @@ class WeixinPay {
      * 用户使用微信客户端扫码后发起支付。
      * 注意：code_url有效期为2小时，过期后扫码不能再发起支付。
      * https://pay.weixin.qq.com/wiki/doc/api/native.php?chapter=9_1
-     * @param array $data device_info，body商品描述，detail商品详情，attach附加数据，trade_no订单号，total_fee标价金额(单位分)，notify_url通知地址，product_id商品ID
+     * @param array $data device_info，body商品描述，detail商品详情，attach附加数据，trade_no订单号，total_fee标价金额，notify_url通知地址，product_id商品ID
      * @return string 支付二维码url
      */
     public static function nativeModel2($data = ['device_info' => 'WEB', 'body' => '', 'detail' => '', 'attach' => '', 'trade_no' => '', 'total_fee' => 0, 'notify_url' => '', 'product_id' => 0]) {
@@ -36,7 +36,7 @@ class WeixinPay {
         $input = new WxPayUnifiedOrder(); //统一下单输入对象
         $input->SetDevice_info($data['device_info']);
         $input->SetDetail($data['detail']); //商品详情
-        $input->SetBody($data['body']); //商品描述(某某模块开通)
+        $input->SetBody($data['body']); //商品描述
         $input->SetAttach($data['attach']); //附加数据
         $input->SetOut_trade_no($data['trade_no']); //商户订单号
         $input->SetTotal_fee($data['total_fee'] * 100); //标价金额(单位分)
