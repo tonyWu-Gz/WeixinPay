@@ -121,7 +121,7 @@ class WeixinPay {
         } else {
             $input->SetOut_trade_no($out_trade_no);
         }
-        $logHandler = new CLogFileHandler(__DIR__ . '/weixinpay/logs/pay/' . date('Y-m') . '.log');        //初始化日志
+        $logHandler = new CLogFileHandler(__DIR__ . '/weixinpay/logs/query/' . date('Y-m') . '.log');        //初始化日志
         Log::Init($logHandler, 15);
         $config = new WxPayConfig();
         $result = WxPayApi::orderQuery($config, $input);
