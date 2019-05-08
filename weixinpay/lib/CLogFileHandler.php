@@ -1,7 +1,4 @@
 <?php
-
-//以下为日志
-
 namespace myapp\weixinpay\lib;
 
 interface ILogHandler {

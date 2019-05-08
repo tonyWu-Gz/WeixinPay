@@ -35,7 +35,7 @@ class WeixinPay {
         Log::Init($logHandler, 15);
         $input = new WxPayUnifiedOrder(); //统一下单输入对象
         $input->SetDevice_info($data['device_info']);
-        $input->SetDetail($data['detail']); //商品详情（某某模块开通1年费用）
+        $input->SetDetail($data['detail']); //商品详情
         $input->SetBody($data['body']); //商品描述(某某模块开通)
         $input->SetAttach($data['attach']); //附加数据
         $input->SetOut_trade_no($data['trade_no']); //商户订单号
@@ -48,8 +48,8 @@ class WeixinPay {
         try {
             $config = new WxPayConfig();
             $result = WxPayApi::unifiedOrder($config, $input);
-            //return $result["code_url"];
-            return $result;
+            return $result["code_url"];
+            //return $result;
         } catch (Exception $e) {
             Log::ERROR(json_encode($e));
             return false;
@@ -59,7 +59,7 @@ class WeixinPay {
     /**
      * 参考http://mp.weixin.qq.com/wiki/17/c0f37d5704f0b64713d5d2c37b468d75.html
      * @param type $data
-     * @return boolean
+     * @return array|boolean
      */
     public static function jsApi($data = ['device_info' => 'WEB', 'body' => '', 'detail' => '', 'attach' => '', 'trade_no' => '', 'total_fee' => 0, 'notify_url' => '', 'product_tag' => 0]) {
         $logHandler = new CLogFileHandler(__DIR__ . '/weixinpay/logs/pay/' . date('Y-m') . '.log');        //初始化日志
