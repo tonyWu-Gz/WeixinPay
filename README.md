@@ -40,19 +40,24 @@ weixinpay
     └─logs  日志目录
         ├─notify 
         ├─pay
-        └─query              
-# 注意事项
+        └─query   
+```      
 
+# 注意事项
+```
 1. 开启日志调试时，需要给log目录写入权限。
 2.需要开启CURL服务、SSL服务。
 3.命名空间默认在myapp，根据实际情况自行调整。
-
-#配置说明
+```
+# 配置说明
+```
 lib目录下的WxPayConfig类中，填写参数配置,包括MCHID，APPID ，KEY ，APPSECRET ，证书路径等，详情见官方说明。
-
-#使用
+```
+# 使用
+```
 文件WeixinPay.php中声明了WeixinPay类，这里只封装了调用扫码支付，jsapi，支付成功回调，以及订单查询等方法提供参考。
 1.扫码支付模式2
 WeixinPay::nativeModel2($data);
 2.订单查询
 WeixinPay::queryorder($transaction_id);
+```
